@@ -2,6 +2,11 @@
   <div>
     <h1>All cities in a book</h1>
 
+    <div class="ui label item-stats">
+      Books
+      <div class="detail"> {{ allBooks.length }} </div>
+    </div>
+
     <div class="ui search" id="book-search">
       <input class="prompt" type="text" placeholder="Type a book">
       <div class="results"></div>
@@ -26,13 +31,17 @@ export default {
   },
   methods: {
     getAllBooks: function () {
+      const vm = this
       axios.get('https://cors.io/?http://167.99.206.3:8081/server/api/books')
         .then(response => {
           this.allBooks = response.data.AllBooks
           this.mountAutocompleteData()
         })
         .catch(error => {
-          console.log('error', error)
+          console.log('Error getting all books. Will retry in 5 seconds.')
+          setTimeout(() => {
+            vm.getAllBooks()
+          }, 5000);
         })
     },
     getCitiesByBook: function (bookId) {
@@ -63,7 +72,7 @@ export default {
       }
     },
     mountAutocompleteData: function () {
-      console.log('all books array length', this.allBooks.length)
+      console.log('all books', this.allBooks.length)
       const vm = this
       $('#book-search').search({
         source: vm.allBooks,
@@ -87,9 +96,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 #map {
   height: 400px;
   width: 100%;
   margin-top: 20px;
 }
+
 </style>

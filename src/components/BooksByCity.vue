@@ -6,6 +6,11 @@
       <div class="results"></div>
     </div>
 
+    <div class="ui label item-stats">
+      Cities
+      <div class="detail"> {{ allCities.length }} </div>
+    </div>
+
     <div class="ui active centered inline loader" id="loading-spinner" v-show="requestPending"></div>
 
     <div class="statistics-container">
@@ -66,13 +71,17 @@ export default {
   },
   methods: {
     getAllCities: function () {
+      const vm = this
       axios.get('/static/allCities.json')
         .then(response => {
           this.allCities = response.data.AllCities
           this.mountAutocompleteData()
         })
         .catch(error => {
-          console.log('error', error)
+          console.log('Error getting all cities. Will retry in 5 seconds.')
+          setTimeout(() => {
+            vm.getAllCities()
+          }, 5000);
         })
     },
     getBooksByCity: function (cityId) {
@@ -94,7 +103,7 @@ export default {
         })
     },
     mountAutocompleteData: function () {
-      console.log('allcities length', this.allCities.length)
+      console.log('all cities', this.allCities.length)
       var content = this.allCities
       const vm = this
       $('#city-search').search({

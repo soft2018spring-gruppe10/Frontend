@@ -2,6 +2,11 @@
   <div>
     <h1>All cities mentioned by an author</h1>
 
+    <div class="ui label item-stats">
+      Authors
+      <div class="detail"> {{ allAuthors.length }} </div>
+    </div>
+
     <div class="ui search" id="author-search">
       <input class="prompt" type="text" placeholder="Type an author">
       <div class="results"></div>
@@ -51,13 +56,17 @@ export default {
   },
   methods: {
     getAllAuthors: function () {
+      const vm = this
       axios.get('https://cors.io/?http://167.99.206.3:8081/server/api/authors')
         .then(response => {
           this.allAuthors = response.data.AllAuthors
           this.mountAutocompleteData()
         })
         .catch(error => {
-          console.log('error', error)
+          console.log('Error getting all authors. Will retry in 5 seconds.')
+          setTimeout(() => {
+            vm.getAllAuthors()
+          }, 5000);
         })
     },
     // When an author is chosen, get all their books

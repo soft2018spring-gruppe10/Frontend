@@ -3,7 +3,10 @@
     <h1>The Gutenberg Project - Group 10</h1>
     <h2>Kristian, Daniel and Edmond</h2>
 
-    <button id="restart-btn" class="ui button" v-bind:class="{loading: serverRestartPending}" @click="restartServer">Restart Server</button>
+    <div id="restart-btn" class="ui button" v-bind:class="{loading: serverRestartPending}"
+      @click="restartServer" data-tooltip="Restart server if items are not loaded" data-position="bottom right">
+      Restart Server
+    </div>
 
     <div class="ui top attached tabular menu">
       <a class="item active" data-tab="first">Books by city</a>
@@ -102,4 +105,15 @@ a {
 }
 
 </style>
+
+<style lang="scss">
+
+.item-stats {
+  position: absolute;
+  right: 10px;
+  top: 22px;
+}
+
+</style>
+
 
