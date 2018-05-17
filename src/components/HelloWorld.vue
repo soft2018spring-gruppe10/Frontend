@@ -1,94 +1,44 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+  <div class="content-wrapper">
+
+    <div class="ui top attached tabular menu">
+      <a class="item active" data-tab="first">First</a>
+      <a class="item" data-tab="second">Second</a>
+      <a class="item" data-tab="third">Third</a>
+    </div>
+    <div class="ui bottom attached tab segment active" data-tab="first">
+      <books-by-city></books-by-city>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="second">
+      Second
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="third">
+      Third
+    </div>
+
   </div>
 </template>
 
+
 <script>
+import BooksByCity from '@/components/BooksByCity'
+
 export default {
   name: 'HelloWorld',
+  components: {
+    BooksByCity
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  mounted() {
+    this.mountTabs()
+  },
+  methods: {
+    mountTabs: function () {
+      $('.menu .item').tab()
     }
   }
 }
@@ -111,3 +61,12 @@ a {
   color: #42b983;
 }
 </style>
+
+<style lang="scss" scoped>
+
+.content-wrapper {
+  padding: 20px;
+}
+
+</style>
+
