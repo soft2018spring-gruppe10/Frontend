@@ -8,19 +8,25 @@
       Restart Server
     </div>
 
-    <div class="ui top attached tabular menu">
-      <a class="item active" data-tab="first">Books by city</a>
-      <a class="item" data-tab="second">Cities in book</a>
-      <a class="item" data-tab="third">Cities by author</a>
-    </div>
-    <div class="ui bottom attached tab segment active" data-tab="first">
-      <books-by-city></books-by-city>
-    </div>
-    <div class="ui bottom attached tab segment" data-tab="second">
-      <cities-in-book></cities-in-book>
-    </div>
-    <div class="ui bottom attached tab segment" data-tab="third">
-      <cities-by-author></cities-by-author>
+    <div class="tabs-container">
+      <div class="ui top attached tabular menu">
+        <a class="item active" data-tab="first">Books by city</a>
+        <a class="item" data-tab="second">Cities in book</a>
+        <a class="item" data-tab="third">Cities by author</a>
+        <a class="item" data-tab="fourth">Books near a city</a>
+      </div>
+      <div class="ui bottom attached tab segment active" data-tab="first">
+        <books-by-city></books-by-city>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="second">
+        <cities-in-book></cities-in-book>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="third">
+        <cities-by-author></cities-by-author>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="fourth">
+        <books-near-a-city></books-near-a-city>
+      </div>
     </div>
 
   </div>
@@ -32,6 +38,7 @@ import axios from 'axios'
 import BooksByCity from '@/components/BooksByCity'
 import CitiesInBook from '@/components/CitiesInBook'
 import CitiesByAuthor from '@/components/CitiesByAuthor'
+import BooksNearACity from '@/components/BooksNearACity'
 
 export default {
   name: 'HelloWorld',
@@ -39,6 +46,7 @@ export default {
     BooksByCity,
     CitiesInBook,
     CitiesByAuthor,
+    BooksNearACity,
   },
   data () {
     return {
@@ -104,9 +112,14 @@ a {
   right: 10px;
 }
 
+.tabs-container {
+  margin-top: 50px;
+}
+
 </style>
 
 <style lang="scss">
+/* Global variables */
 
 .item-stats {
   position: absolute;
