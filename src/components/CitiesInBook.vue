@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>2. All cities in a book</h1>
+    <h1>All cities in a book</h1>
+
     <div class="ui search" id="book-search">
       <input class="prompt" type="text" placeholder="Type a book">
       <div class="results"></div>
@@ -46,12 +47,6 @@ export default {
         })
     },
     plotCitiesOnMap: function () {
-
-      var uluru = {
-        lat: -25.363,
-        lng: 131.044,
-        cityName: "cop",
-      };
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 1.5,
         center: {
