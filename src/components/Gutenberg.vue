@@ -1,16 +1,18 @@
 <template>
   <div class="content-wrapper">
+    <h1>The Gutenberg Project - Group 10</h1>
+    <h2>Christian, Daniel and Edmond</h2>
 
     <div class="ui top attached tabular menu">
-      <a class="item active" data-tab="first">First</a>
-      <a class="item" data-tab="second">Second</a>
+      <a class="item active" data-tab="first">Books by city</a>
+      <a class="item" data-tab="second">Cities in book</a>
       <a class="item" data-tab="third">Third</a>
     </div>
     <div class="ui bottom attached tab segment active" data-tab="first">
       <books-by-city></books-by-city>
     </div>
     <div class="ui bottom attached tab segment" data-tab="second">
-      Second
+      <cities-in-book></cities-in-book>
     </div>
     <div class="ui bottom attached tab segment" data-tab="third">
       Third
@@ -22,11 +24,13 @@
 
 <script>
 import BooksByCity from '@/components/BooksByCity'
+import CitiesInBook from '@/components/CitiesInBook'
 
 export default {
   name: 'HelloWorld',
   components: {
-    BooksByCity
+    BooksByCity,
+    CitiesInBook
   },
   data () {
     return {
