@@ -14,7 +14,6 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-RUN mkdir dist
 
 EXPOSE 8080
 CMD [ "npm", "run", "build"]
