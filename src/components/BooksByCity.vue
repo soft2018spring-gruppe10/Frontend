@@ -8,7 +8,7 @@
 
     <div class="ui label item-stats">
       Cities
-      <div class="detail"> {{ allCities.length }} </div>
+      <div class="detail" id="book-count"> {{ allCities.length }} </div>
     </div>
 
     <div class="ui active centered inline loader" id="loading-spinner" v-show="requestPending"></div>

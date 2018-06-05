@@ -10,7 +10,7 @@
 
     <div class="tabs-container">
       <div class="ui top attached tabular menu">
-        <a class="item active" data-tab="first">Books by city</a>
+        <a class="item active" data-tab="first" id="books-by-city-tab">Books by city</a>
         <a class="item" data-tab="second">Cities in book</a>
         <a class="item" data-tab="third">Cities by author</a>
         <a class="item" data-tab="fourth">Books near a city</a>
